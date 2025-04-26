@@ -99,8 +99,15 @@ export default function Home() {
     try {
       setIsSubmitting(true);
       
-      // Simulate a short delay
-      await new Promise(resolve => setTimeout(resolve, 800));
+      // Submit the lead data to Supabase via our service
+      await leadService.submitLead({
+        parentName: data.parentName,
+        childGrade: data.childGrade,
+        schoolName: data.schoolName,
+        city: data.city,
+        mobileNumber: data.mobileNumber,
+        email: data.email
+      });
       
       // Show success message
       toast({
@@ -112,10 +119,12 @@ export default function Home() {
       // Reset the form
       form.reset();
     } catch (error) {
-      // Show error message (this should never happen in this implementation)
+      console.error("Form submission error:", error);
+      
+      // Show error message
       toast({
         title: "Error submitting form",
-        description: "Please try again later.",
+        description: error instanceof Error ? error.message : "Please try again later.",
         variant: "destructive",
       });
     } finally {

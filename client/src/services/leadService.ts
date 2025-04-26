@@ -54,14 +54,14 @@ export const leadService = {
       
       // Transform from database format (snake_case) to client format (camelCase)
       return {
-        id: typedData.id,
-        parentName: typedData.parent_name,
-        childGrade: typedData.child_grade,
-        schoolName: typedData.school_name || undefined,
-        city: typedData.city,
-        mobileNumber: typedData.mobile_number,
-        email: typedData.email || undefined,
-        createdAt: typedData.created_at,
+        id: id,
+        parentName: parent_name,
+        childGrade: child_grade,
+        schoolName: school_name || undefined,
+        city: city,
+        mobileNumber: mobile_number,
+        email: email || undefined,
+        createdAt: created_at,
       };
     } catch (error) {
       console.error('Error submitting lead:', error);
