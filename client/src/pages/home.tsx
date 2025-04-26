@@ -910,7 +910,7 @@ export default function Home() {
           >
             <div className="lg:w-1/2">
               <img 
-                src="https://www.schoolbusfleet.com/ext/resources/issues/may2010/0511sbf-keyfeature.jpg?t=1534880797&width=1080" 
+                src="https://images.pexels.com/photos/20874644/pexels-photo-20874644/free-photo-of-school-buses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                 alt="School buses" 
                 className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
               />
