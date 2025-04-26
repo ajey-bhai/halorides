@@ -742,7 +742,7 @@ export default function Home() {
                       name="parentName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full Name</FormLabel>
+                          <FormLabel>Full Name <span className="text-red-500">*</span></FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Your name" 
@@ -787,7 +787,7 @@ export default function Home() {
                       name="mobileNumber"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Mobile Number</FormLabel>
+                          <FormLabel>Mobile Number <span className="text-red-500">*</span></FormLabel>
                           <FormControl>
                             <div className="relative">
                               <div className="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500 pointer-events-none">
@@ -818,7 +818,7 @@ export default function Home() {
                       name="childGrade"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Child's Grade</FormLabel>
+                          <FormLabel>Child's Grade <span className="text-red-500">*</span></FormLabel>
                           <Select 
                             onValueChange={field.onChange} 
                             defaultValue={field.value}
@@ -872,7 +872,7 @@ export default function Home() {
                       name="city"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>City</FormLabel>
+                          <FormLabel>City <span className="text-red-500">*</span></FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Your city" 
@@ -894,13 +894,17 @@ export default function Home() {
                     />
                   </div>
                   
-                  <div className="flex items-center mt-2 mb-4">
+                  <div className="flex items-center mt-2 mb-2">
                     <div className="w-4 h-4 bg-primary/20 rounded-full flex items-center justify-center mr-2">
                       <i className="ri-information-line text-primary text-xs"></i>
                     </div>
                     <p className="text-sm text-gray-600">
                       By submitting this form, you agree to receive updates about HaloRide's safety services.
                     </p>
+                  </div>
+                  
+                  <div className="mb-4 text-sm text-gray-500">
+                    <span className="text-red-500">*</span> Indicates required fields
                   </div>
                   
                   <Button 
@@ -1130,14 +1134,19 @@ export default function Home() {
                     />
                   </div>
                   
-                  <Button type="submit" disabled={isSubmitting} className="whitespace-nowrap">
-                    {isSubmitting ? (
-                      <div className="flex items-center">
-                        <i className="ri-loader-2-line animate-spin mr-2"></i>
-                        <span>Submitting...</span>
-                      </div>
-                    ) : "Submit details"}
-                  </Button>
+                  <div className="flex flex-col">
+                    <Button type="submit" disabled={isSubmitting} className="whitespace-nowrap">
+                      {isSubmitting ? (
+                        <div className="flex items-center">
+                          <i className="ri-loader-2-line animate-spin mr-2"></i>
+                          <span>Submitting...</span>
+                        </div>
+                      ) : "Submit details"}
+                    </Button>
+                    <div className="text-xs text-gray-500 mt-1 text-right">
+                      <span className="text-red-500">*</span> Required fields
+                    </div>
+                  </div>
                 </form>
               </Form>
             </div>
