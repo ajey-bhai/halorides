@@ -76,7 +76,7 @@ export default function Home() {
       setIsSubmitting(true);
       
       // Send the form data to our API
-      await apiRequest("/api/leads", "POST", data);
+      await apiRequest("POST", "/api/leads", data);
       
       // Show success message
       toast({
@@ -283,8 +283,11 @@ export default function Home() {
       </section>
       
       {/* Features Section */}
-      <section ref={featuresRef} id="features" className="py-20 bg-white section">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+      <section ref={featuresRef} id="features" className="py-20 bg-white section relative overflow-hidden">
+        <div className="absolute top-40 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-64 h-64 bg-green-200/10 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -306,9 +309,10 @@ export default function Home() {
               viewport={{ once: true }}
               variants={slideInLeft}
             >
-              <Card className="glass-dark h-full">
-                <CardContent className="pt-8">
-                  <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center mb-6">
+              <Card className="glass-dark h-full backdrop-blur-sm shadow-xl border border-white/10 overflow-hidden relative">
+                <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl"></div>
+                <CardContent className="pt-8 relative z-10">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/40 to-primary/20 flex items-center justify-center mb-6 shadow-lg backdrop-blur-sm">
                     <i className="ri-parent-line text-2xl text-primary"></i>
                   </div>
                   <h3 className="text-xl font-semibold font-poppins text-gray-800 mb-3">For Parents</h3>
@@ -317,19 +321,27 @@ export default function Home() {
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Real-time location tracking</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Pickup & drop-off notifications</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Driver information & ratings</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Route monitoring & alerts</span>
                     </li>
                   </ul>
@@ -345,9 +357,10 @@ export default function Home() {
               variants={fadeInUp}
               transition={{ delay: 0.2 }}
             >
-              <Card className="glass-dark h-full">
-                <CardContent className="pt-8">
-                  <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center mb-6">
+              <Card className="glass-dark h-full backdrop-blur-sm shadow-xl border border-white/10 overflow-hidden relative">
+                <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl"></div>
+                <CardContent className="pt-8 relative z-10">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/40 to-primary/20 flex items-center justify-center mb-6 shadow-lg backdrop-blur-sm">
                     <i className="ri-school-line text-2xl text-primary"></i>
                   </div>
                   <h3 className="text-xl font-semibold font-poppins text-gray-800 mb-3">For Schools</h3>
@@ -356,19 +369,27 @@ export default function Home() {
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Centralized fleet management</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Transportation analytics</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Route optimization</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Attendance integration</span>
                     </li>
                   </ul>
@@ -384,9 +405,10 @@ export default function Home() {
               variants={slideInRight}
               transition={{ delay: 0.3 }}
             >
-              <Card className="glass-dark h-full">
-                <CardContent className="pt-8">
-                  <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center mb-6">
+              <Card className="glass-dark h-full backdrop-blur-sm shadow-xl border border-white/10 overflow-hidden relative">
+                <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl"></div>
+                <CardContent className="pt-8 relative z-10">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/40 to-primary/20 flex items-center justify-center mb-6 shadow-lg backdrop-blur-sm">
                     <i className="ri-steering-2-line text-2xl text-primary"></i>
                   </div>
                   <h3 className="text-xl font-semibold font-poppins text-gray-800 mb-3">For Drivers</h3>
@@ -395,19 +417,27 @@ export default function Home() {
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Student manifest & attendance</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Optimized route navigation</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>One-click pickup/drop confirmations</span>
                     </li>
                     <li className="flex items-start">
-                      <i className="ri-check-line text-primary mt-1 mr-2"></i>
+                      <div className="mt-1 mr-3 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <i className="ri-check-line text-primary text-xs"></i>
+                      </div>
                       <span>Emergency reporting system</span>
                     </li>
                   </ul>
@@ -419,8 +449,11 @@ export default function Home() {
       </section>
       
       {/* How It Works */}
-      <section ref={howItWorksRef} id="how-it-works" className="py-20 bg-gray-50 section">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+      <section ref={howItWorksRef} id="how-it-works" className="py-20 bg-gray-50 section relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -434,7 +467,9 @@ export default function Home() {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
+            <div className="hidden md:block absolute top-32 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 z-0"></div>
+            
             {/* Step 1 */}
             <motion.div 
               className="relative"
@@ -443,12 +478,12 @@ export default function Home() {
               viewport={{ once: true }}
               variants={staggeredFadeInUp(0.1)}
             >
-              <Card className="glass h-full">
+              <Card className="glass-dark h-full backdrop-blur-md shadow-xl border border-white/10">
                 <CardContent className="pt-12">
-                  <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">1</div>
+                  <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-xl ring-4 ring-primary/20">1</div>
                   <div className="text-center mb-6 pt-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                      <i className="ri-user-add-line text-2xl text-primary"></i>
+                    <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm shadow-inner">
+                      <i className="ri-user-add-line text-3xl text-primary"></i>
                     </div>
                     <h3 className="text-xl font-semibold font-poppins text-gray-800">Register Your Child</h3>
                   </div>
@@ -458,7 +493,9 @@ export default function Home() {
                 </CardContent>
               </Card>
               <div className="hidden md:block absolute top-1/2 -right-6 transform translate-x-0 -translate-y-1/2 z-10">
-                <i className="ri-arrow-right-line text-3xl text-primary/50"></i>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 backdrop-blur-sm">
+                  <i className="ri-arrow-right-line text-2xl text-primary"></i>
+                </div>
               </div>
             </motion.div>
             
@@ -470,12 +507,12 @@ export default function Home() {
               viewport={{ once: true }}
               variants={staggeredFadeInUp(0.3)}
             >
-              <Card className="glass h-full">
+              <Card className="glass-dark h-full backdrop-blur-md shadow-xl border border-white/10">
                 <CardContent className="pt-12">
-                  <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">2</div>
+                  <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-xl ring-4 ring-primary/20">2</div>
                   <div className="text-center mb-6 pt-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                      <i className="ri-school-line text-2xl text-primary"></i>
+                    <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm shadow-inner">
+                      <i className="ri-school-line text-3xl text-primary"></i>
                     </div>
                     <h3 className="text-xl font-semibold font-poppins text-gray-800">Select Your School</h3>
                   </div>
@@ -485,7 +522,9 @@ export default function Home() {
                 </CardContent>
               </Card>
               <div className="hidden md:block absolute top-1/2 -right-6 transform translate-x-0 -translate-y-1/2 z-10">
-                <i className="ri-arrow-right-line text-3xl text-primary/50"></i>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 backdrop-blur-sm">
+                  <i className="ri-arrow-right-line text-2xl text-primary"></i>
+                </div>
               </div>
             </motion.div>
             
@@ -497,12 +536,12 @@ export default function Home() {
               viewport={{ once: true }}
               variants={staggeredFadeInUp(0.5)}
             >
-              <Card className="glass h-full">
+              <Card className="glass-dark h-full backdrop-blur-md shadow-xl border border-white/10">
                 <CardContent className="pt-12">
-                  <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">3</div>
+                  <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-xl ring-4 ring-primary/20">3</div>
                   <div className="text-center mb-6 pt-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                      <i className="ri-map-pin-time-line text-2xl text-primary"></i>
+                    <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm shadow-inner">
+                      <i className="ri-map-pin-time-line text-3xl text-primary"></i>
                     </div>
                     <h3 className="text-xl font-semibold font-poppins text-gray-800">Track Daily Commute</h3>
                   </div>
@@ -513,6 +552,36 @@ export default function Home() {
               </Card>
             </motion.div>
           </div>
+          
+          <motion.div 
+            className="mt-16 p-8 glass-light rounded-2xl shadow-xl max-w-4xl mx-auto backdrop-blur-sm border border-white/20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="md:w-1/2">
+                <img 
+                  src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  alt="Mobile app interface" 
+                  className="rounded-lg shadow-md w-full object-cover"
+                />
+              </div>
+              <div className="md:w-1/2">
+                <h3 className="text-xl font-semibold mb-3">Complete Transparency</h3>
+                <p className="text-gray-600 mb-4">
+                  Our intuitive mobile app puts control in parents' hands with detailed trip information, driver details, and real-time location tracking for complete peace of mind.
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                    <i className="ri-shield-check-line text-primary"></i>
+                  </div>
+                  <span className="font-medium">Safety-First Approach</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
       
