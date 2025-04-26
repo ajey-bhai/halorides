@@ -103,16 +103,41 @@ export default function Home() {
     try {
       setIsSubmitting(true);
       
-      // Submit the lead data to Supabase via our service
-      await leadService.submitLead({
-        parentName: data.parentName,
-        childGrade: data.childGrade,
-        schoolName: data.schoolName,
-        city: data.city,
-        mobileNumber: data.mobileNumber,
-        // Include email only if it exists and isn't empty
-        ...(data.email ? { email: data.email } : {})
-      });
+      try {
+        // Try to submit the lead data to Supabase first
+        await leadService.submitLead({
+          parentName: data.parentName,
+          childGrade: data.childGrade,
+          schoolName: data.schoolName,
+          city: data.city,
+          mobileNumber: data.mobileNumber,
+          // Include email only if it exists and isn't empty
+          ...(data.email ? { email: data.email } : {})
+        });
+      } catch (supabaseError) {
+        console.error('Supabase submission failed, falling back to API:', supabaseError);
+        
+        // Fall back to our local API if Supabase fails
+        const response = await fetch('/api/leads', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            parentName: data.parentName,
+            childGrade: data.childGrade,
+            schoolName: data.schoolName || undefined,
+            city: data.city,
+            mobileNumber: data.mobileNumber,
+            email: data.email || undefined,
+          }),
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(`API submission failed: ${errorData.message || response.statusText}`);
+        }
+      }
       
       // Show success message
       toast({
@@ -127,6 +152,7 @@ export default function Home() {
       console.error("Form submission error:", error);
       
       // Show error message
+      // Display a more detailed error message if available
       toast({
         title: "Error submitting form",
         description: error instanceof Error ? error.message : "Please try again later.",

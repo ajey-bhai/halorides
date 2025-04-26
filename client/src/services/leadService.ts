@@ -36,7 +36,13 @@ export const leadService = {
         .single();
       
       if (error) {
-        throw error;
+        console.error('Supabase error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        });
+        throw new Error(`Supabase error: ${error.message}. ${error.hint || ''}`);
       }
       
       if (!data) {
