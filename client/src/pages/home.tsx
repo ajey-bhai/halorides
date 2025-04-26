@@ -768,10 +768,10 @@ export default function Home() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email Address</FormLabel>
+                          <FormLabel>Email Address (Optional)</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="your.email@example.com" 
+                              placeholder="your.email@example.com (optional)" 
                               type="email" 
                               {...field} 
                               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
@@ -846,10 +846,10 @@ export default function Home() {
                       name="schoolName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>School Name</FormLabel>
+                          <FormLabel>School Name (Optional)</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="Your child's school" 
+                              placeholder="Your child's school (optional)" 
                               onKeyPress={(e) => {
                                 const charCode = e.which ? e.which : e.keyCode;
                                 if (!(charCode >= 65 && charCode <= 90) && 
