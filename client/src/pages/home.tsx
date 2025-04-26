@@ -33,7 +33,11 @@ export default function Home() {
   const featuresRef = useRef<HTMLDivElement>(null);
   const howItWorksRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showStickyForm, setShowStickyForm] = useState(false);
+  // Use sessionStorage to remember if user has closed the sticky form
+  const [showStickyForm, setShowStickyForm] = useState(() => {
+    // Check if the user has already closed the form in this session
+    return sessionStorage.getItem('stickyFormClosed') !== 'true';
+  });
 
   // Define grade options for dropdown
   const gradeOptions = [
@@ -61,6 +65,11 @@ export default function Home() {
   // Add scroll event listener to show/hide sticky form
   useEffect(() => {
     const handleScroll = () => {
+      // Only show the form if user hasn't explicitly closed it in this session
+      if (sessionStorage.getItem('stickyFormClosed') === 'true') {
+        return;
+      }
+      
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       
@@ -1007,7 +1016,11 @@ export default function Home() {
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-gray-800">Want Complete Safety for Your Child?</h3>
             <button 
-              onClick={() => setShowStickyForm(false)}
+              onClick={() => {
+                // Save user preference in sessionStorage
+                sessionStorage.setItem('stickyFormClosed', 'true');
+                setShowStickyForm(false);
+              }}
               className="text-gray-500 hover:text-gray-700 focus:outline-none"
             >
               <i className="ri-close-line text-xl"></i>
