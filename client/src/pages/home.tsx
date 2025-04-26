@@ -699,7 +699,7 @@ export default function Home() {
             >
               <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">Join HaloRide Today</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Request early access and be among the first to experience complete safety for your children's school commutes.
+                Request early access and be among the first to experience complete safety for every journey.
               </p>
             </motion.div>
             
@@ -964,7 +964,7 @@ export default function Home() {
               </div>
               <span className="font-bold text-primary">HaloRide</span>
             </div>
-            <p className="text-gray-500">&copy; {new Date().getFullYear()} HaloRide. Complete Safety for School Commutes.</p>
+            <p className="text-gray-500">&copy; {new Date().getFullYear()} HaloRide. Complete safety for every journey.</p>
           </div>
         </div>
       </section>
@@ -989,7 +989,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-4 gap-4 items-center">
             <div className="md:col-span-1">
-              <p className="text-gray-600">Register now for early access to the HaloRide platform and ensure complete safety during your child's school commute.</p>
+              <p className="text-gray-600">Register now for early access to the HaloRide platform and ensure complete safety for every journey.</p>
             </div>
             
             <div className="md:col-span-3">
