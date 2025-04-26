@@ -192,7 +192,7 @@ export default function Home() {
               <div className="glass rounded-2xl p-6 shadow-xl max-w-md w-full">
                 <div className="relative">
                   <img 
-                    src="https://cdn.pixabay.com/photo/2019/07/11/14/25/school-bus-4330606_1280.jpg" 
+                    src="https://images.pexels.com/photos/6491991/pexels-photo-6491991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                     alt="School children in a van" 
                     className="rounded-xl w-full h-64 object-cover"
                   />
@@ -540,9 +540,9 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="md:w-1/2">
                 <img 
-                  src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                   alt="Mobile app interface" 
-                  className="rounded-lg shadow-md w-full object-cover"
+                  className="rounded-lg shadow-md w-full object-cover h-[300px]"
                 />
               </div>
               <div className="md:w-1/2">
@@ -909,9 +909,9 @@ export default function Home() {
           >
             <div className="lg:w-1/2">
               <img 
-                src="https://images.unsplash.com/photo-1594621848029-b3c763c28cfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                src="https://images.pexels.com/photos/8535214/pexels-photo-8535214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                 alt="School children safely commuting" 
-                className="rounded-2xl shadow-xl w-full object-cover"
+                className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
               />
             </div>
             <div className="lg:w-1/2">
