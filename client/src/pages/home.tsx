@@ -33,11 +33,8 @@ export default function Home() {
   const featuresRef = useRef<HTMLDivElement>(null);
   const howItWorksRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // Use sessionStorage to remember if user has closed the sticky form
-  const [showStickyForm, setShowStickyForm] = useState(() => {
-    // Check if the user has already closed the form in this session
-    return sessionStorage.getItem('stickyFormClosed') !== 'true';
-  });
+  // Initially show sticky form regardless of previous state
+  const [showStickyForm, setShowStickyForm] = useState(false);
 
   // Define grade options for dropdown
   const gradeOptions = [
@@ -64,9 +61,12 @@ export default function Home() {
   
   // Add scroll event listener to show/hide sticky form
   useEffect(() => {
+    // Create a variable to track if form has been closed in this session
+    let isFormClosedThisSession = false;
+    
     const handleScroll = () => {
-      // Only show the form if user hasn't explicitly closed it in this session
-      if (sessionStorage.getItem('stickyFormClosed') === 'true') {
+      // If user has closed the form in this session (not persisted)
+      if (isFormClosedThisSession) {
         return;
       }
       
@@ -77,8 +77,22 @@ export default function Home() {
       setShowStickyForm(scrollPosition > windowHeight * 0.5);
     };
     
+    // Custom event for when the form is closed
+    const handleFormClosed = () => {
+      isFormClosedThisSession = true;
+    };
+    
+    // Add event listeners
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('stickyFormClosed', handleFormClosed);
+    
+    // Initial scroll check
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('stickyFormClosed', handleFormClosed);
+    };
   }, []);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
@@ -893,8 +907,8 @@ export default function Home() {
             <h3 className="text-lg font-semibold text-gray-800">Want Complete Safety for Your Child?</h3>
             <button 
               onClick={() => {
-                // Save user preference in sessionStorage
-                sessionStorage.setItem('stickyFormClosed', 'true');
+                // Emit custom event to notify the form is closed
+                document.dispatchEvent(new Event('stickyFormClosed'));
                 setShowStickyForm(false);
               }}
               className="text-gray-500 hover:text-gray-700 focus:outline-none"
