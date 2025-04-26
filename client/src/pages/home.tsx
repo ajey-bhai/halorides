@@ -1054,11 +1054,21 @@ export default function Home() {
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormControl>
-                            <Input 
-                              placeholder="Child's grade" 
-                              {...field} 
-                              className="w-full border-gray-300" 
-                            />
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <SelectTrigger className="w-full border-gray-300">
+                                <SelectValue placeholder="Select grade" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {Array.from({ length: 12 }, (_, i) => (
+                                  <SelectItem key={i + 1} value={`Class ${i + 1}`}>
+                                    Class {i + 1}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                           </FormControl>
                           <FormMessage className="text-xs" />
                         </FormItem>
