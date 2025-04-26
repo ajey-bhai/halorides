@@ -659,7 +659,7 @@ export default function Home() {
             >
               <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">Join HaloRide Today</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Request early access and be among the first to experience divine protection for your children's school commutes.
+                Request early access and be among the first to experience complete safety for your children's school commutes.
               </p>
             </motion.div>
             
@@ -675,7 +675,7 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
-                      name="name"
+                      name="parentName"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Full Name</FormLabel>
@@ -781,7 +781,7 @@ export default function Home() {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel className="text-sm text-gray-600 font-normal">
-                            I agree to receive updates about HaloRide's divine protection service and understand that my data will be processed in accordance with the Privacy Policy.
+                            I agree to receive updates about HaloRide's safety services and understand that my data will be processed in accordance with the Privacy Policy.
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -821,9 +821,9 @@ export default function Home() {
               />
             </div>
             <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">Our Divine Protection Vision</h2>
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">Our Safety Vision</h2>
               <p className="text-lg text-gray-600 mb-6">
-                At HaloRide, we're dedicated to creating a divine shield of protection around every child's journey to and from school. Our commitment to divine safety includes:
+                At HaloRide, we're dedicated to creating a complete safety system around every child's journey to and from school. Our commitment to transportation safety includes:
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -870,7 +870,7 @@ export default function Home() {
               </div>
               <span className="font-bold text-primary">HaloRide</span>
             </div>
-            <p className="text-gray-500">&copy; {new Date().getFullYear()} HaloRide. Divine Protection for School Commutes.</p>
+            <p className="text-gray-500">&copy; {new Date().getFullYear()} HaloRide. Complete Safety for School Commutes.</p>
           </div>
         </div>
       </section>
@@ -884,7 +884,7 @@ export default function Home() {
       >
         <div className="container mx-auto px-4 md:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Want Divine Protection for Your Child?</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Want Complete Safety for Your Child?</h3>
             <button 
               onClick={() => setShowStickyForm(false)}
               className="text-gray-500 hover:text-gray-700 focus:outline-none"
@@ -895,7 +895,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-4 items-center">
             <div className="md:col-span-1">
-              <p className="text-gray-600">Register now for early access to the HaloRide platform and ensure divine protection during your child's school commute.</p>
+              <p className="text-gray-600">Register now for early access to the HaloRide platform and ensure complete safety during your child's school commute.</p>
             </div>
             
             <div className="md:col-span-2">
