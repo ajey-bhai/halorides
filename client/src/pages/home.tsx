@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { fadeIn, fadeInUp, staggerContainer, slideInLeft, slideInRight, staggeredFadeInUp } from "@/lib/motion";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -778,14 +779,19 @@ export default function Home() {
                       name="mobileNumber"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
+                          <FormLabel>Mobile Number</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="Your phone number" 
-                              type="tel" 
-                              {...field} 
-                              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
-                            />
+                            <div className="relative">
+                              <div className="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500 pointer-events-none">
+                                +91
+                              </div>
+                              <Input 
+                                placeholder="10-digit mobile number" 
+                                type="tel" 
+                                {...field} 
+                                className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
+                              />
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -798,13 +804,23 @@ export default function Home() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Child's Grade</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Your child's grade level" 
-                              {...field} 
-                              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
-                            />
-                          </FormControl>
+                          <Select 
+                            onValueChange={field.onChange} 
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors">
+                                <SelectValue placeholder="Select grade" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {Array.from({ length: 12 }, (_, i) => (
+                                <SelectItem key={i + 1} value={`Class ${i + 1}`}>
+                                  Class {i + 1}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -847,46 +863,14 @@ export default function Home() {
                     />
                   </div>
                   
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Additional Information (Optional)</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Tell us about your requirements..." 
-                            rows={4} 
-                            {...field} 
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="consent"
-                    render={({ field }) => (
-                      <FormItem className="flex items-start space-x-2 space-y-0">
-                        <FormControl>
-                          <Checkbox 
-                            checked={field.value} 
-                            onCheckedChange={field.onChange} 
-                            className="w-4 h-4 text-primary rounded border-gray-300 focus:ring-primary" 
-                          />
-                        </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm text-gray-600 font-normal">
-                            I agree to receive updates about HaloRide's safety services and understand that my data will be processed in accordance with the Privacy Policy.
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
-                      </FormItem>
-                    )}
-                  />
+                  <div className="flex items-center mt-2 mb-4">
+                    <div className="w-4 h-4 bg-primary/20 rounded-full flex items-center justify-center mr-2">
+                      <i className="ri-information-line text-primary text-xs"></i>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      By submitting this form, you agree to receive updates about HaloRide's safety services.
+                    </p>
+                  </div>
                   
                   <Button 
                     type="submit" 
@@ -1026,12 +1010,17 @@ export default function Home() {
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormControl>
-                            <Input 
-                              placeholder="Your phone number" 
-                              type="tel" 
-                              {...field} 
-                              className="w-full border-gray-300" 
-                            />
+                            <div className="relative">
+                              <div className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 pointer-events-none text-xs">
+                                +91
+                              </div>
+                              <Input 
+                                placeholder="10-digit mobile number" 
+                                type="tel" 
+                                {...field} 
+                                className="w-full pl-10 border-gray-300" 
+                              />
+                            </div>
                           </FormControl>
                           <FormMessage className="text-xs" />
                         </FormItem>
