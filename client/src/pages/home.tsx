@@ -909,8 +909,8 @@ export default function Home() {
           >
             <div className="lg:w-1/2">
               <img 
-                src="https://images.pexels.com/photos/8535214/pexels-photo-8535214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                alt="School children safely commuting" 
+                src="https://images.pexels.com/photos/20874644/pexels-photo-20874644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                alt="School buses" 
                 className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
               />
             </div>
