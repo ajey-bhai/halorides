@@ -106,12 +106,13 @@ export default function Home() {
       <nav className="fixed w-full bg-white bg-opacity-90 backdrop-blur-md z-50 shadow-sm">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <a href="#" className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center relative">
-                <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse" style={{ width: 'calc(100% + 8px)', height: 'calc(100% + 8px)', top: '-4px', left: '-4px' }}></div>
-                <i className="ri-shield-star-line text-white text-xl"></i>
+            <a href="#" className="flex items-center space-x-3">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-600 flex items-center justify-center relative shadow-lg transform hover:scale-105 transition-all duration-300" style={{ boxShadow: '0 4px 10px rgba(72, 187, 120, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3)' }}>
+                <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse" style={{ width: 'calc(100% + 10px)', height: 'calc(100% + 10px)', top: '-5px', left: '-5px' }}></div>
+                <div className="absolute inset-0 rounded-full bg-white/10" style={{ width: 'calc(100% - 4px)', height: 'calc(100% - 4px)', top: '2px', left: '2px' }}></div>
+                <i className="ri-shield-star-line text-white text-2xl drop-shadow-md"></i>
               </div>
-              <span className="text-xl font-bold font-poppins text-gray-800">HaloRide</span>
+              <span className="text-2xl font-bold font-poppins text-gray-800 drop-shadow-sm">HaloRide</span>
             </a>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -955,14 +956,15 @@ export default function Home() {
           </motion.div>
           
           <div className="text-center mt-12 pt-8 border-t border-gray-200">
-            <div className="flex items-center justify-center mb-2">
-              <div className="relative mr-2">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <i className="ri-shield-star-line text-white"></i>
+            <div className="flex items-center justify-center mb-3">
+              <div className="relative mr-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center shadow-lg" style={{ boxShadow: '0 4px 8px rgba(72, 187, 120, 0.3), inset 0 2px 3px rgba(255, 255, 255, 0.3)' }}>
+                  <div className="absolute inset-0 rounded-full bg-white/10" style={{ width: 'calc(100% - 4px)', height: 'calc(100% - 4px)', top: '2px', left: '2px' }}></div>
+                  <i className="ri-shield-star-line text-white text-xl drop-shadow-md"></i>
                 </div>
-                <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-50"></div>
+                <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-30" style={{ width: 'calc(100% + 4px)', height: 'calc(100% + 4px)', top: '-2px', left: '-2px' }}></div>
               </div>
-              <span className="font-bold text-primary">HaloRide</span>
+              <span className="font-bold text-xl text-primary drop-shadow-sm">HaloRide</span>
             </div>
             <p className="text-gray-500">&copy; {new Date().getFullYear()} HaloRide. Complete safety for every journey.</p>
           </div>
