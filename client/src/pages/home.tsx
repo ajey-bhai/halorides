@@ -746,6 +746,14 @@ export default function Home() {
                           <FormControl>
                             <Input 
                               placeholder="Your name" 
+                              onKeyPress={(e) => {
+                                const charCode = e.which ? e.which : e.keyCode;
+                                if (!(charCode >= 65 && charCode <= 90) && 
+                                    !(charCode >= 97 && charCode <= 122) && 
+                                    !(charCode === 32)) {
+                                  e.preventDefault();
+                                }
+                              }}
                               {...field} 
                               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
                             />
@@ -788,6 +796,13 @@ export default function Home() {
                               <Input 
                                 placeholder="10-digit mobile number" 
                                 type="tel" 
+                                maxLength={10}
+                                onKeyPress={(e) => {
+                                  const charCode = e.which ? e.which : e.keyCode;
+                                  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                                    e.preventDefault();
+                                  }
+                                }}
                                 {...field} 
                                 className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
                               />
@@ -835,6 +850,14 @@ export default function Home() {
                           <FormControl>
                             <Input 
                               placeholder="Your child's school" 
+                              onKeyPress={(e) => {
+                                const charCode = e.which ? e.which : e.keyCode;
+                                if (!(charCode >= 65 && charCode <= 90) && 
+                                    !(charCode >= 97 && charCode <= 122) && 
+                                    !(charCode === 32)) {
+                                  e.preventDefault();
+                                }
+                              }}
                               {...field} 
                               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
                             />
@@ -853,6 +876,14 @@ export default function Home() {
                           <FormControl>
                             <Input 
                               placeholder="Your city" 
+                              onKeyPress={(e) => {
+                                const charCode = e.which ? e.which : e.keyCode;
+                                if (!(charCode >= 65 && charCode <= 90) && 
+                                    !(charCode >= 97 && charCode <= 122) && 
+                                    !(charCode === 32)) {
+                                  e.preventDefault();
+                                }
+                              }}
                               {...field} 
                               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
                             />
@@ -993,6 +1024,14 @@ export default function Home() {
                           <FormControl>
                             <Input 
                               placeholder="Your name" 
+                              onKeyPress={(e) => {
+                                const charCode = e.which ? e.which : e.keyCode;
+                                if (!(charCode >= 65 && charCode <= 90) && 
+                                    !(charCode >= 97 && charCode <= 122) && 
+                                    !(charCode === 32)) {
+                                  e.preventDefault();
+                                }
+                              }}
                               {...field} 
                               className="w-full border-gray-300" 
                             />
@@ -1017,6 +1056,13 @@ export default function Home() {
                               <Input 
                                 placeholder="10-digit mobile number" 
                                 type="tel" 
+                                maxLength={10}
+                                onKeyPress={(e) => {
+                                  const charCode = e.which ? e.which : e.keyCode;
+                                  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                                    e.preventDefault();
+                                  }
+                                }}
                                 {...field} 
                                 className="w-full pl-10 border-gray-300" 
                               />
@@ -1037,6 +1083,14 @@ export default function Home() {
                           <FormControl>
                             <Input 
                               placeholder="Your city" 
+                              onKeyPress={(e) => {
+                                const charCode = e.which ? e.which : e.keyCode;
+                                if (!(charCode >= 65 && charCode <= 90) && 
+                                    !(charCode >= 97 && charCode <= 122) && 
+                                    !(charCode === 32)) {
+                                  e.preventDefault();
+                                }
+                              }}
                               {...field} 
                               className="w-full border-gray-300" 
                             />
