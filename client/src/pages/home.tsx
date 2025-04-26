@@ -908,7 +908,7 @@ export default function Home() {
                     className="w-full bg-primary hover:bg-primary/90 text-white px-6 py-6 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Submitting..." : "Request Early Access"}
+                    {isSubmitting ? "Submitting..." : "Submit details"}
                   </Button>
                 </form>
               </Form>
@@ -1136,7 +1136,7 @@ export default function Home() {
                         <i className="ri-loader-2-line animate-spin mr-2"></i>
                         <span>Submitting...</span>
                       </div>
-                    ) : "Get Started"}
+                    ) : "Submit details"}
                   </Button>
                 </form>
               </Form>
