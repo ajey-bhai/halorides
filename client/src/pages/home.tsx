@@ -17,14 +17,12 @@ import { apiRequest } from "@/lib/queryClient";
 
 // Form schema for the lead form
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  phone: z.string().min(10, { message: "Please enter a valid phone number" }),
-  school: z.string().min(2, { message: "School name must be at least 2 characters" }),
-  message: z.string().optional(),
-  consent: z.boolean().refine(val => val === true, {
-    message: "You must agree to receive updates"
-  })
+  parentName: z.string().min(2, { message: "Name must be at least 2 characters" }).regex(/^[a-zA-Z\s]+$/, { message: "Only alphabets allowed" }),
+  childGrade: z.string().min(1, { message: "Please select a grade" }),
+  schoolName: z.string().regex(/^[a-zA-Z\s]*$/, { message: "Only alphabets allowed" }).optional(),
+  city: z.string().min(2, { message: "City must be at least 2 characters" }).regex(/^[a-zA-Z\s]+$/, { message: "Only alphabets allowed" }),
+  mobileNumber: z.string().regex(/^\d{10}$/, { message: "Must be exactly 10 digits" }),
+  email: z.string().email({ message: "Please enter a valid email address" }).optional()
 });
 
 export default function Home() {
@@ -36,15 +34,21 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showStickyForm, setShowStickyForm] = useState(false);
 
+  // Define grade options for dropdown
+  const gradeOptions = [
+    "Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", 
+    "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"
+  ];
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      school: "",
-      message: "",
-      consent: false
+      parentName: "",
+      childGrade: "",
+      schoolName: "",
+      city: "",
+      mobileNumber: "",
+      email: ""
     }
   });
 

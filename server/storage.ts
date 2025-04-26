@@ -43,11 +43,12 @@ export class MemStorage implements IStorage {
     // Create a new object with explicitly defined properties to avoid TypeScript errors
     const lead: Lead = { 
       id,
-      name: insertLead.name,
-      email: insertLead.email,
-      phone: insertLead.phone,
-      school: insertLead.school,
-      message: insertLead.message !== undefined ? insertLead.message : null,
+      parentName: insertLead.parentName,
+      childGrade: insertLead.childGrade,
+      schoolName: insertLead.schoolName || null,
+      city: insertLead.city,
+      mobileNumber: insertLead.mobileNumber,
+      email: insertLead.email || null,
       createdAt: new Date().toISOString() 
     };
     this.leadsStore.set(id, lead);
