@@ -28,7 +28,8 @@ export const leadService = {
           school_name: leadData.schoolName || null,
           city: leadData.city,
           mobile_number: leadData.mobileNumber,
-          email: leadData.email || null,
+          // Convert empty string to null for database storage
+          email: leadData.email && leadData.email.trim() !== '' ? leadData.email : null,
           created_at: new Date().toISOString(),
         }])
         .select()

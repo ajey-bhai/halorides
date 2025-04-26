@@ -23,7 +23,11 @@ const formSchema = z.object({
   schoolName: z.string().regex(/^[a-zA-Z\s]*$/, { message: "Only alphabets allowed" }).optional(),
   city: z.string().min(2, { message: "City must be at least 2 characters" }).regex(/^[a-zA-Z\s]+$/, { message: "Only alphabets allowed" }),
   mobileNumber: z.string().regex(/^\d{10}$/, { message: "Must be exactly 10 digits" }),
-  email: z.string().email({ message: "Please enter a valid email address" }).optional()
+  // Make email truly optional - either a valid email or an empty string
+  email: z.union([
+    z.string().email({ message: "Please enter a valid email address" }),
+    z.string().max(0)
+  ]).optional()
 });
 
 export default function Home() {
@@ -106,7 +110,8 @@ export default function Home() {
         schoolName: data.schoolName,
         city: data.city,
         mobileNumber: data.mobileNumber,
-        email: data.email
+        // Include email only if it exists and isn't empty
+        ...(data.email ? { email: data.email } : {})
       });
       
       // Show success message
