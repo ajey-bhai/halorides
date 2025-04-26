@@ -192,7 +192,7 @@ export default function Home() {
               <div className="glass rounded-2xl p-6 shadow-xl max-w-md w-full">
                 <div className="relative">
                   <img 
-                    src="https://images.pexels.com/photos/6491991/pexels-photo-6491991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                    src="https://images.hindustantimes.com/rf/image_size_800x600/HT/p1/2013/05/09/Incoming/Pictures/1057288_Wallpaper2.jpg" 
                     alt="School children in a van" 
                     className="rounded-xl w-full h-64 object-cover"
                   />
@@ -909,7 +909,7 @@ export default function Home() {
           >
             <div className="lg:w-1/2">
               <img 
-                src="https://images.pexels.com/photos/20874644/pexels-photo-20874644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                src="https://www.schoolbusfleet.com/ext/resources/issues/may2010/0511sbf-keyfeature.jpg?t=1534880797&width=1080" 
                 alt="School buses" 
                 className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
               />
