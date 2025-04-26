@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -34,6 +34,7 @@ export default function Home() {
   const featuresRef = useRef<HTMLDivElement>(null);
   const howItWorksRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showStickyForm, setShowStickyForm] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,6 +52,20 @@ export default function Home() {
     setIsMenuOpen(false);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
+  
+  // Add scroll event listener to show/hide sticky form
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Show sticky form after scrolling past 50% of viewport height
+      setShowStickyForm(scrollPosition > windowHeight * 0.5);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
@@ -879,72 +894,148 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12">
+      {/* Vision Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                  <i className="ri-route-line text-white text-xl"></i>
-                </div>
-                <span className="text-xl font-bold font-poppins">Saarthi</span>
-              </div>
-              <p className="text-gray-400 mb-4">
-                Ensuring safe journeys and peaceful minds for parents, schools, and children.
+          <motion.div 
+            className="flex flex-col lg:flex-row items-center gap-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <div className="lg:w-1/2">
+              <img 
+                src="https://images.unsplash.com/photo-1594621848029-b3c763c28cfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                alt="School children safely commuting" 
+                className="rounded-2xl shadow-xl w-full object-cover"
+              />
+            </div>
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">Our Vision for Safe Commutes</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                At Saarthi, we're dedicated to ensuring every child's journey to and from school is safe, secure, and stress-free. Our commitment to safety includes:
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <i className="ri-facebook-fill text-xl"></i>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <i className="ri-twitter-fill text-xl"></i>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <i className="ri-instagram-fill text-xl"></i>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <i className="ri-linkedin-fill text-xl"></i>
-                </a>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-lg mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Press</a></li>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <div className="mt-1 mr-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <i className="ri-check-line text-white text-sm"></i>
+                  </div>
+                  <p className="text-gray-600">Thorough background checks for all drivers</p>
+                </li>
+                <li className="flex items-start">
+                  <div className="mt-1 mr-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <i className="ri-check-line text-white text-sm"></i>
+                  </div>
+                  <p className="text-gray-600">Regular vehicle safety inspections</p>
+                </li>
+                <li className="flex items-start">
+                  <div className="mt-1 mr-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <i className="ri-check-line text-white text-sm"></i>
+                  </div>
+                  <p className="text-gray-600">Advanced real-time tracking technology</p>
+                </li>
+                <li className="flex items-start">
+                  <div className="mt-1 mr-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <i className="ri-check-line text-white text-sm"></i>
+                  </div>
+                  <p className="text-gray-600">Emergency response protocols for any situation</p>
+                </li>
+                <li className="flex items-start">
+                  <div className="mt-1 mr-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <i className="ri-check-line text-white text-sm"></i>
+                  </div>
+                  <p className="text-gray-600">Continuous driver training and certification</p>
+                </li>
               </ul>
             </div>
-            
-            <div>
-              <h3 className="font-semibold text-lg mb-4">Resources</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Safety Center</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Community</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-lg mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Safety Protocols</a></li>
-              </ul>
-            </div>
-          </div>
+          </motion.div>
           
-          <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Saarthi. All rights reserved.</p>
+          <div className="text-center mt-12 pt-8 border-t border-gray-200">
+            <p className="text-gray-500">&copy; {new Date().getFullYear()} Saarthi. All rights reserved.</p>
           </div>
         </div>
-      </footer>
+      </section>
+      
+      {/* Sticky Lead Form */}
+      <motion.div
+        className={`fixed bottom-0 left-0 right-0 bg-white shadow-xl z-40 transform transition-transform duration-300 ${showStickyForm ? 'translate-y-0' : 'translate-y-full'}`}
+        initial={{ y: '100%' }}
+        animate={{ y: showStickyForm ? 0 : '100%' }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold text-gray-800">Interested in Saarthi?</h3>
+            <button 
+              onClick={() => setShowStickyForm(false)}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
+              <i className="ri-close-line text-xl"></i>
+            </button>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-4 items-center">
+            <div className="md:col-span-1">
+              <p className="text-gray-600">Register now for early access to the Saarthi platform and ensure your child's safe commute.</p>
+            </div>
+            
+            <div className="md:col-span-2">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col md:flex-row gap-3">
+                  <div className="md:flex-1">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem className="space-y-1">
+                          <FormControl>
+                            <Input 
+                              placeholder="Your name" 
+                              {...field} 
+                              className="w-full border-gray-300" 
+                            />
+                          </FormControl>
+                          <FormMessage className="text-xs" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <div className="md:flex-1">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem className="space-y-1">
+                          <FormControl>
+                            <Input 
+                              placeholder="Your phone number" 
+                              type="tel" 
+                              {...field} 
+                              className="w-full border-gray-300" 
+                            />
+                          </FormControl>
+                          <FormMessage className="text-xs" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <Button type="submit" disabled={isSubmitting} className="whitespace-nowrap">
+                    {isSubmitting ? (
+                      <div className="flex items-center">
+                        <i className="ri-loader-2-line animate-spin mr-2"></i>
+                        <span>Submitting...</span>
+                      </div>
+                    ) : "Get Started"}
+                  </Button>
+                </form>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
