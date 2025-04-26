@@ -540,11 +540,36 @@ export default function Home() {
           >
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="md:w-1/2">
-                <img 
-                  src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                  alt="Mobile app interface" 
-                  className="rounded-lg shadow-md w-full object-cover h-[300px]"
-                />
+                <div className="relative rounded-lg shadow-md w-full h-[300px] bg-white flex justify-center items-center overflow-hidden">
+                  {/* Phone outline */}
+                  <div className="relative w-[200px] h-[380px] bg-white border-4 border-gray-800 rounded-[30px] shadow-lg flex flex-col items-center p-4 transform scale-90">
+                    {/* Phone notch */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-6 bg-gray-800 rounded-b-lg"></div>
+                    
+                    {/* Phone screen - White background with HaloRide logo */}
+                    <div className="w-full h-full bg-white flex flex-col items-center justify-center pt-6">
+                      {/* HaloRide logo (large version) */}
+                      <div className="w-24 h-24 bg-gradient-to-br from-primary to-primary-600 rounded-full flex items-center justify-center relative shadow-lg mb-4" style={{ boxShadow: '0 6px 12px rgba(72, 187, 120, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.4)' }}>
+                        <div className="absolute inset-0 rounded-full bg-white/10" style={{ width: 'calc(100% - 6px)', height: 'calc(100% - 6px)', top: '3px', left: '3px' }}></div>
+                        <i className="ri-shield-star-line text-white text-4xl drop-shadow-md"></i>
+                      </div>
+                      <span className="text-2xl font-bold text-gray-800">HaloRide</span>
+                      <span className="text-sm text-primary mt-1">Complete safety for every journey</span>
+                      
+                      {/* App UI elements */}
+                      <div className="w-full mt-6 px-4">
+                        <div className="w-full h-10 bg-gray-100 rounded-lg mb-3 flex items-center px-3">
+                          <i className="ri-map-pin-line text-primary mr-2"></i>
+                          <div className="w-full h-4 bg-gray-200 rounded"></div>
+                        </div>
+                        <div className="w-full h-10 bg-primary/10 rounded-lg flex items-center px-3">
+                          <i className="ri-shield-check-line text-primary mr-2"></i>
+                          <div className="w-2/3 h-4 bg-primary/20 rounded"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="md:w-1/2">
                 <h3 className="text-xl font-semibold mb-3">Complete Transparency</h3>
