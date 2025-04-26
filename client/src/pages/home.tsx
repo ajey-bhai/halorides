@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { fadeIn, fadeInUp, staggerContainer, slideInLeft, slideInRight, staggeredFadeInUp } from "@/lib/motion";
+import { leadService } from "@/services/leadService";
 
 // Form schema for the lead form
 const formSchema = z.object({
