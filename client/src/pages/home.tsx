@@ -76,13 +76,7 @@ export default function Home() {
       setIsSubmitting(true);
       
       // Send the form data to our API
-      await apiRequest("/api/leads", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+      await apiRequest("/api/leads", "POST", data);
       
       // Show success message
       toast({
@@ -712,7 +706,7 @@ export default function Home() {
                     
                     <FormField
                       control={form.control}
-                      name="phone"
+                      name="mobileNumber"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Phone Number</FormLabel>
@@ -731,13 +725,49 @@ export default function Home() {
                     
                     <FormField
                       control={form.control}
-                      name="school"
+                      name="childGrade"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Child's Grade</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Your child's grade level" 
+                              {...field} 
+                              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="schoolName"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>School Name</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Your child's school" 
+                              {...field} 
+                              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="city"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>City</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Your city" 
                               {...field} 
                               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" 
                             />
@@ -893,18 +923,18 @@ export default function Home() {
             </button>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-4 items-center">
+          <div className="grid md:grid-cols-4 gap-4 items-center">
             <div className="md:col-span-1">
               <p className="text-gray-600">Register now for early access to the HaloRide platform and ensure complete safety during your child's school commute.</p>
             </div>
             
-            <div className="md:col-span-2">
+            <div className="md:col-span-3">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col md:flex-row gap-3">
                   <div className="md:flex-1">
                     <FormField
                       control={form.control}
-                      name="name"
+                      name="parentName"
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormControl>
@@ -923,13 +953,51 @@ export default function Home() {
                   <div className="md:flex-1">
                     <FormField
                       control={form.control}
-                      name="phone"
+                      name="mobileNumber"
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormControl>
                             <Input 
                               placeholder="Your phone number" 
                               type="tel" 
+                              {...field} 
+                              className="w-full border-gray-300" 
+                            />
+                          </FormControl>
+                          <FormMessage className="text-xs" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <div className="md:flex-1">
+                    <FormField
+                      control={form.control}
+                      name="city"
+                      render={({ field }) => (
+                        <FormItem className="space-y-1">
+                          <FormControl>
+                            <Input 
+                              placeholder="Your city" 
+                              {...field} 
+                              className="w-full border-gray-300" 
+                            />
+                          </FormControl>
+                          <FormMessage className="text-xs" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <div className="md:flex-1">
+                    <FormField
+                      control={form.control}
+                      name="childGrade"
+                      render={({ field }) => (
+                        <FormItem className="space-y-1">
+                          <FormControl>
+                            <Input 
+                              placeholder="Child's grade" 
                               {...field} 
                               className="w-full border-gray-300" 
                             />
