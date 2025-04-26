@@ -1,6 +1,4 @@
 import { users, type User, type InsertUser, leads, type Lead, type InsertLead } from "@shared/schema";
-import { db } from "./db";
-import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -10,36 +8,50 @@ export interface IStorage {
   getLeads(): Promise<Lead[]>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private users: Map<number, User>;
+  private leadsStore: Map<number, Lead>;
+  currentUserId: number;
+  currentLeadId: number;
+
+  constructor() {
+    this.users = new Map();
+    this.leadsStore = new Map();
+    this.currentUserId = 1;
+    this.currentLeadId = 1;
+  }
+
   async getUser(id: number): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user || undefined;
+    return this.users.get(id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user || undefined;
+    return Array.from(this.users.values()).find(
+      (user) => user.username === username,
+    );
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(insertUser)
-      .returning();
+    const id = this.currentUserId++;
+    const user: User = { ...insertUser, id };
+    this.users.set(id, user);
     return user;
   }
 
   async createLead(insertLead: InsertLead): Promise<Lead> {
-    const [lead] = await db
-      .insert(leads)
-      .values(insertLead)
-      .returning();
+    const id = this.currentLeadId++;
+    const lead: Lead = { 
+      ...insertLead, 
+      id, 
+      createdAt: new Date().toISOString() 
+    };
+    this.leadsStore.set(id, lead);
     return lead;
   }
 
   async getLeads(): Promise<Lead[]> {
-    return await db.select().from(leads).orderBy(leads.createdAt);
+    return Array.from(this.leadsStore.values());
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();
