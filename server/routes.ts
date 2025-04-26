@@ -6,6 +6,15 @@ import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Endpoint for frontend config
+  app.get("/api/config", (_req: Request, res: Response) => {
+    // Only expose the Supabase public credentials
+    res.json({
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseAnonKey: process.env.SUPABASE_ANON_KEY
+    });
+  });
+
   // API route for submitting a lead form
   app.post("/api/leads", async (req: Request, res: Response) => {
     try {
