@@ -829,11 +829,11 @@ export default function Home() {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {Array.from({ length: 12 }, (_, i) => (
-                                <SelectItem key={i + 1} value={`Class ${i + 1}`}>
-                                  Class {i + 1}
-                                </SelectItem>
-                              ))}
+                              <SelectItem value="Pre-primary">Pre-primary (Pre-nursery, Nursery, LKG, UKG)</SelectItem>
+                              <SelectItem value="Lower primary">Lower primary (Class 1-5)</SelectItem>
+                              <SelectItem value="Higher primary">Higher primary (Class 6-8)</SelectItem>
+                              <SelectItem value="Secondary">Secondary (Class 9-10)</SelectItem>
+                              <SelectItem value="Higher secondary">Higher secondary (Class 11-12)</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -1120,11 +1120,11 @@ export default function Home() {
                                 <SelectValue placeholder="Select grade" />
                               </SelectTrigger>
                               <SelectContent>
-                                {Array.from({ length: 12 }, (_, i) => (
-                                  <SelectItem key={i + 1} value={`Class ${i + 1}`}>
-                                    Class {i + 1}
-                                  </SelectItem>
-                                ))}
+                                <SelectItem value="Pre-primary">Pre-primary (Pre-nursery, Nursery, LKG, UKG)</SelectItem>
+                                <SelectItem value="Lower primary">Lower primary (Class 1-5)</SelectItem>
+                                <SelectItem value="Higher primary">Higher primary (Class 6-8)</SelectItem>
+                                <SelectItem value="Secondary">Secondary (Class 9-10)</SelectItem>
+                                <SelectItem value="Higher secondary">Higher secondary (Class 11-12)</SelectItem>
                               </SelectContent>
                             </Select>
                           </FormControl>
