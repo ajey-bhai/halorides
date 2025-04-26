@@ -104,10 +104,11 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <a href="#" className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <i className="ri-route-line text-white text-xl"></i>
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center relative">
+                <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse" style={{ width: 'calc(100% + 8px)', height: 'calc(100% + 8px)', top: '-4px', left: '-4px' }}></div>
+                <i className="ri-shield-star-line text-white text-xl"></i>
               </div>
-              <span className="text-xl font-bold font-poppins text-gray-800">Saarthi</span>
+              <span className="text-xl font-bold font-poppins text-gray-800">HaloRide</span>
             </a>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -154,10 +155,10 @@ export default function Home() {
               variants={fadeInUp}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-gray-800 leading-tight mb-4">
-                Saarthi - <span className="text-primary">Safe Journeys,</span> Peaceful Minds
+                HaloRide - <span className="text-primary">Divine Protection</span> for Every Journey
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
-                Track your child's commute in real-time with Saarthi — connecting parents, schools, and van drivers for a secure transportation experience.
+                Track your child's commute in real-time with HaloRide — providing a protective ring of safety that connects parents, schools, and van drivers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
@@ -306,7 +307,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">For Everyone Involved</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Saarthi connects all stakeholders in your child's commute journey, creating a seamless and safe experience for everyone.
+              HaloRide connects all stakeholders in your child's commute journey, creating a divine shield of protection for everyone.
             </p>
           </motion.div>
           
@@ -440,9 +441,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">How Saarthi Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">How HaloRide Works</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Getting started with Saarthi is simple. Follow these three steps to ensure the safety of your child's daily commute.
+              Getting started with HaloRide is simple. Follow these three steps to ensure divine protection for your child's daily commute.
             </p>
           </motion.div>
           
@@ -528,92 +529,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* App Preview */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
-              className="lg:w-1/2"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={slideInLeft}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">The Saarthi App Experience</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Our intuitive mobile app gives you complete visibility and control over your child's school transportation journey.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 w-10 h-10 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center">
-                    <i className="ri-map-2-line text-primary"></i>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Real-Time Tracking</h3>
-                    <p className="text-gray-600">See your child's van location on a map with estimated arrival times.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 w-10 h-10 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center">
-                    <i className="ri-notification-4-line text-primary"></i>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Smart Notifications</h3>
-                    <p className="text-gray-600">Get alerts for pickup, drop-off, delays, and route changes.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 w-10 h-10 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center">
-                    <i className="ri-chat-1-line text-primary"></i>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">In-App Communication</h3>
-                    <p className="text-gray-600">Message drivers and school administrators directly within the app.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-8 flex flex-wrap gap-4">
-                <button className="bg-black text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-gray-800 transition shadow-md">
-                  <i className="ri-apple-fill text-xl"></i>
-                  <div className="text-left">
-                    <div className="text-xs">Download on the</div>
-                    <div className="font-medium">App Store</div>
-                  </div>
-                </button>
-                
-                <button className="bg-black text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-gray-800 transition shadow-md">
-                  <i className="ri-google-play-fill text-xl"></i>
-                  <div className="text-left">
-                    <div className="text-xs">Get it on</div>
-                    <div className="font-medium">Google Play</div>
-                  </div>
-                </button>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="lg:w-1/2 flex justify-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={slideInRight}
-            >
-              <div className="relative">
-                <div className="absolute -top-6 -left-6 w-64 h-64 bg-primary/20 rounded-full opacity-60 filter blur-3xl"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Saarthi mobile app interface" 
-                  className="glass rounded-2xl shadow-2xl z-10 relative w-full max-w-sm"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+
       
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50">
@@ -627,7 +543,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">What Parents Are Saying</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Join thousands of satisfied parents who trust Saarthi with their children's commute safety.
+              Join thousands of satisfied parents who trust HaloRide's divine protection for their children's commute safety.
             </p>
           </motion.div>
           
@@ -651,7 +567,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-6">
-                    "Saarthi has removed all my worries about my daughter's school commute. I can track her journey in real-time and get instant notifications when she reaches school."
+                    "HaloRide has removed all my worries about my daughter's school commute. The divine protection it offers gives me complete peace of mind with real-time tracking and instant notifications."
                   </p>
                   <div className="flex items-center">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-3">
@@ -685,7 +601,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-6">
-                    "As a working parent, I was always concerned about my son's transportation. Saarthi's driver verification process and real-time tracking give me complete peace of mind."
+                    "As a working parent, I was always concerned about my son's transportation. HaloRide's divine protection through verified drivers and real-time tracking gives me complete peace of mind."
                   </p>
                   <div className="flex items-center">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-3">
@@ -719,7 +635,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-6">
-                    "The direct communication with our van driver through the Saarthi app is a game-changer. I can easily inform them about schedule changes or ask questions."
+                    "The divine protection and direct communication with our van driver through HaloRide is a game-changer. It feels like there's a guardian angel watching over my children's journey."
                   </p>
                   <div className="flex items-center">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-3">
