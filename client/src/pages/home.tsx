@@ -14,7 +14,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { fadeIn, fadeInUp, staggerContainer, slideInLeft, slideInRight, staggeredFadeInUp } from "@/lib/motion";
-import { apiRequest } from "@/lib/queryClient";
 
 // Form schema for the lead form
 const formSchema = z.object({
@@ -99,8 +98,8 @@ export default function Home() {
     try {
       setIsSubmitting(true);
       
-      // Send the form data to our API
-      await apiRequest("POST", "/api/leads", data);
+      // Simulate a short delay
+      await new Promise(resolve => setTimeout(resolve, 800));
       
       // Show success message
       toast({
@@ -112,7 +111,7 @@ export default function Home() {
       // Reset the form
       form.reset();
     } catch (error) {
-      // Show error message
+      // Show error message (this should never happen in this implementation)
       toast({
         title: "Error submitting form",
         description: "Please try again later.",
