@@ -258,31 +258,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Trust Statement */}
-      <section className="bg-gray-50 py-10">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div 
-            className="glass-light p-8 rounded-2xl max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
-                  <i className="ri-shield-check-line text-3xl text-primary"></i>
-                </div>
-              </div>
-              <div className="text-center md:text-left">
-                <h3 className="text-xl md:text-2xl font-medium text-gray-800 mb-2">Trusted by Schools Nationwide</h3>
-                <p className="text-gray-600">With over 200 partnered schools and 10,000+ satisfied parents, we've built a reputation for safe, reliable school transportation solutions.</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
+
       {/* Features Section */}
       <section ref={featuresRef} id="features" className="py-20 bg-white section relative overflow-hidden">
         <div className="absolute top-40 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
