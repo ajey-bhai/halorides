@@ -173,8 +173,8 @@ export default function Home() {
               <div className="glass rounded-2xl p-6 shadow-xl max-w-md w-full">
                 <div className="relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1503423571797-2d2bb372094a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                    alt="School children in a bus" 
+                    src="https://images.unsplash.com/photo-1617307326200-77f63340015b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                    alt="Indian school children in a van" 
                     className="rounded-xl w-full h-64 object-cover"
                   />
                   <div className="absolute -bottom-6 -right-6 bg-white rounded-lg p-3 shadow-lg">
@@ -258,20 +258,22 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-xl mr-2"></i>
-              <span>Delhi Public School</span>
+              <i className="ri-building-4-line text-2xl mr-2"></i>
             </motion.div>
             <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-xl mr-2"></i>
-              <span>St. Xavier's High</span>
+              <i className="ri-building-4-line text-2xl mr-2"></i>
             </motion.div>
             <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-xl mr-2"></i>
-              <span>Modern Academy</span>
+              <i className="ri-building-4-line text-2xl mr-2"></i>
             </motion.div>
             <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-xl mr-2"></i>
-              <span>Springdales School</span>
+              <i className="ri-building-4-line text-2xl mr-2"></i>
+            </motion.div>
+            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
+              <i className="ri-building-4-line text-2xl mr-2"></i>
+            </motion.div>
+            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
+              <i className="ri-building-4-line text-2xl mr-2"></i>
             </motion.div>
           </motion.div>
         </div>
@@ -470,12 +472,12 @@ export default function Home() {
                   <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">2</div>
                   <div className="text-center mb-6 pt-4">
                     <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                      <i className="ri-team-line text-2xl text-primary"></i>
+                      <i className="ri-school-line text-2xl text-primary"></i>
                     </div>
-                    <h3 className="text-xl font-semibold font-poppins text-gray-800">Connect With Drivers</h3>
+                    <h3 className="text-xl font-semibold font-poppins text-gray-800">Select Your School</h3>
                   </div>
                   <p className="text-gray-600 text-center">
-                    Get matched with verified and certified drivers in your area who service your child's school route.
+                    Choose your child's school and get matched with verified and certified drivers serving your route.
                   </p>
                 </CardContent>
               </Card>
