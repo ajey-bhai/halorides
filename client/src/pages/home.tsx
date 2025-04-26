@@ -74,16 +74,20 @@ export default function Home() {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       setIsSubmitting(true);
-      // Extract consent as it's not part of our backend schema
-      const { consent, ...leadData } = data;
       
       // Send the form data to our API
-      await apiRequest("POST", "/api/leads", leadData);
+      await apiRequest("/api/leads", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
       
       // Show success message
       toast({
         title: "Form submitted successfully!",
-        description: "Thank you for your interest in Saarthi. We'll get back to you soon.",
+        description: "Thank you for your interest in HaloRide. We'll get back to you soon.",
         variant: "default",
       });
       
@@ -159,10 +163,10 @@ export default function Home() {
               variants={fadeInUp}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-gray-800 leading-tight mb-4">
-                HaloRide - <span className="text-primary">Divine Protection</span> for Every Journey
+                HaloRide - <span className="text-primary">Complete Safety</span> for Every Journey
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
-                Track your child's commute in real-time with HaloRide — providing a protective ring of safety that connects parents, schools, and van drivers.
+                Track your child's commute in real-time with HaloRide — providing a protective shield of safety that connects parents, schools, and van drivers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
@@ -193,8 +197,8 @@ export default function Home() {
               <div className="glass rounded-2xl p-6 shadow-xl max-w-md w-full">
                 <div className="relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1617307326200-77f63340015b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                    alt="Indian school children in a van" 
+                    src="https://cdn.pixabay.com/photo/2019/07/11/14/25/school-bus-4330606_1280.jpg" 
+                    alt="School children in a van" 
                     className="rounded-xl w-full h-64 object-cover"
                   />
                   <div className="absolute -bottom-6 -right-6 bg-white rounded-lg p-3 shadow-lg">
@@ -259,42 +263,27 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Trusted By */}
+      {/* Trust Statement */}
       <section className="bg-gray-50 py-10">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.p 
-            className="text-center text-gray-500 font-medium mb-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Trusted by leading schools across the country
-          </motion.p>
           <motion.div 
-            className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
-            initial="hidden"
-            whileInView="visible"
+            className="glass-light p-8 rounded-2xl max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            variants={staggerContainer}
           >
-            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-2xl mr-2"></i>
-            </motion.div>
-            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-2xl mr-2"></i>
-            </motion.div>
-            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-2xl mr-2"></i>
-            </motion.div>
-            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-2xl mr-2"></i>
-            </motion.div>
-            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-2xl mr-2"></i>
-            </motion.div>
-            <motion.div className="text-gray-400 flex items-center font-medium" variants={fadeInUp}>
-              <i className="ri-building-4-line text-2xl mr-2"></i>
-            </motion.div>
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
+                  <i className="ri-shield-check-line text-3xl text-primary"></i>
+                </div>
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-medium text-gray-800 mb-2">Trusted by Schools Nationwide</h3>
+                <p className="text-gray-600">With over 200 partnered schools and 10,000+ satisfied parents, we've built a reputation for safe, reliable school transportation solutions.</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -311,7 +300,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">For Everyone Involved</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              HaloRide connects all stakeholders in your child's commute journey, creating a divine shield of protection for everyone.
+              HaloRide connects all stakeholders in your child's commute journey, creating a complete safety system for everyone.
             </p>
           </motion.div>
           
@@ -447,7 +436,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">How HaloRide Works</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Getting started with HaloRide is simple. Follow these three steps to ensure divine protection for your child's daily commute.
+              Getting started with HaloRide is simple. Follow these three steps to ensure complete safety for your child's daily commute.
             </p>
           </motion.div>
           
@@ -547,7 +536,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-800 mb-4">What Parents Are Saying</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Join thousands of satisfied parents who trust HaloRide's divine protection for their children's commute safety.
+              Join thousands of satisfied parents who trust HaloRide's complete safety system for their children's commute.
             </p>
           </motion.div>
           
@@ -571,7 +560,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-6">
-                    "HaloRide has removed all my worries about my daughter's school commute. The divine protection it offers gives me complete peace of mind with real-time tracking and instant notifications."
+                    "HaloRide has removed all my worries about my daughter's school commute. The safety features give me complete peace of mind with real-time tracking and instant notifications."
                   </p>
                   <div className="flex items-center">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-3">
@@ -605,7 +594,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-6">
-                    "As a working parent, I was always concerned about my son's transportation. HaloRide's divine protection through verified drivers and real-time tracking gives me complete peace of mind."
+                    "As a working parent, I was always concerned about my son's transportation. HaloRide's comprehensive safety system with verified drivers and real-time tracking gives me complete peace of mind."
                   </p>
                   <div className="flex items-center">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-3">
@@ -639,7 +628,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-6">
-                    "The divine protection and direct communication with our van driver through HaloRide is a game-changer. It feels like there's a guardian angel watching over my children's journey."
+                    "The robust safety features and direct communication with our van driver through HaloRide is a game-changer. The comprehensive tracking system ensures my children's journey is always secure."
                   </p>
                   <div className="flex items-center">
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-3">
