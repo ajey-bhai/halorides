@@ -40,9 +40,14 @@ export class MemStorage implements IStorage {
 
   async createLead(insertLead: InsertLead): Promise<Lead> {
     const id = this.currentLeadId++;
+    // Create a new object with explicitly defined properties to avoid TypeScript errors
     const lead: Lead = { 
-      ...insertLead, 
-      id, 
+      id,
+      name: insertLead.name,
+      email: insertLead.email,
+      phone: insertLead.phone,
+      school: insertLead.school,
+      message: insertLead.message !== undefined ? insertLead.message : null,
       createdAt: new Date().toISOString() 
     };
     this.leadsStore.set(id, lead);
