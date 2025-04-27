@@ -18,12 +18,11 @@ import { leadService } from "@/services/leadService";
 
 // Form schema for the lead form
 const formSchema = z.object({
-  parentName: z.string().min(2, { message: "Name must be at least 2 characters" }).regex(/^[a-zA-Z\s]+$/, { message: "Only alphabets allowed" }),
-  childGrade: z.string().min(1, { message: "Please select a grade" }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }).regex(/^[a-zA-Z\s]+$/, { message: "Only alphabets allowed" }),
+  grade: z.string().min(1, { message: "Please select a grade" }),
   schoolName: z.string().regex(/^[a-zA-Z\s]*$/, { message: "Only alphabets allowed" }).optional(),
   city: z.string().min(2, { message: "City must be at least 2 characters" }).regex(/^[a-zA-Z\s]+$/, { message: "Only alphabets allowed" }),
   mobileNumber: z.string().regex(/^\d{10}$/, { message: "Must be exactly 10 digits" }),
-  // Make email truly optional - either a valid email or an empty string
   email: z.union([
     z.string().email({ message: "Please enter a valid email address" }),
     z.string().max(0)
@@ -49,8 +48,8 @@ export default function Home() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      parentName: "",
-      childGrade: "",
+      name: "",
+      grade: "",
       schoolName: "",
       city: "",
       mobileNumber: "",
@@ -102,57 +101,22 @@ export default function Home() {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       setIsSubmitting(true);
-      
-      try {
-        // Try to submit the lead data to Supabase first
-        await leadService.submitLead({
-          parentName: data.parentName,
-          childGrade: data.childGrade,
-          schoolName: data.schoolName,
-          city: data.city,
-          mobileNumber: data.mobileNumber,
-          // Include email only if it exists and isn't empty
-          ...(data.email ? { email: data.email } : {})
-        });
-      } catch (supabaseError) {
-        console.error('Supabase submission failed, falling back to API:', supabaseError);
-        
-        // Fall back to our local API if Supabase fails
-        const response = await fetch('/api/leads', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            parentName: data.parentName,
-            childGrade: data.childGrade,
-            schoolName: data.schoolName || undefined,
-            city: data.city,
-            mobileNumber: data.mobileNumber,
-            email: data.email || undefined,
-          }),
-        });
-        
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`API submission failed: ${errorData.message || response.statusText}`);
-        }
-      }
-      
-      // Show success message
+      await leadService.submitLead({
+        name: data.name,
+        grade: data.grade,
+        schoolName: data.schoolName,
+        city: data.city,
+        mobileNumber: data.mobileNumber,
+        ...(data.email ? { email: data.email } : {})
+      });
       toast({
         title: "Form submitted successfully!",
         description: "Thank you for your interest in HaloRide. We'll get back to you soon.",
         variant: "default",
       });
-      
-      // Reset the form
       form.reset();
     } catch (error) {
       console.error("Form submission error:", error);
-      
-      // Show error message
-      // Display a more detailed error message if available
       toast({
         title: "Error submitting form",
         description: error instanceof Error ? error.message : "Please try again later.",
@@ -680,7 +644,7 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
-                      name="parentName"
+                      name="name"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Full Name <span className="text-red-500">*</span></FormLabel>
@@ -756,7 +720,7 @@ export default function Home() {
                     
                     <FormField
                       control={form.control}
-                      name="childGrade"
+                      name="grade"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Child's Grade <span className="text-red-500">*</span></FormLabel>
@@ -968,7 +932,7 @@ export default function Home() {
                   <div className="md:flex-1">
                     <FormField
                       control={form.control}
-                      name="parentName"
+                      name="name"
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormControl>
@@ -1054,7 +1018,7 @@ export default function Home() {
                   <div className="md:flex-1">
                     <FormField
                       control={form.control}
-                      name="childGrade"
+                      name="grade"
                       render={({ field }) => (
                         <FormItem className="space-y-1">
                           <FormControl>

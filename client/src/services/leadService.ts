@@ -1,10 +1,10 @@
-import { getSupabase } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 // Define the lead type
 export interface Lead {
   id?: string;
-  parentName: string;
-  childGrade: string;
+  name: string;
+  grade: string;
   schoolName?: string;
   city: string;
   mobileNumber: string;
@@ -17,14 +17,12 @@ export const leadService = {
   // Submit a new lead
   async submitLead(leadData: Omit<Lead, 'id' | 'createdAt'>): Promise<Lead> {
     try {
-      const supabase = await getSupabase();
-      
-      // Insert the lead into the 'leads' table
+      // Use the supabase client directly
       const { data, error } = await supabase
-        .from('leads')
+        .from('halorides-form')
         .insert([{
-          parent_name: leadData.parentName,
-          child_grade: leadData.childGrade,
+          name: leadData.name,
+          grade: leadData.grade,
           school_name: leadData.schoolName || null,
           city: leadData.city,
           mobile_number: leadData.mobileNumber,
@@ -51,8 +49,8 @@ export const leadService = {
       
       // Accessing data safely
       const id = data?.id as string;
-      const parent_name = data?.parent_name as string;
-      const child_grade = data?.child_grade as string;
+      const name = data?.name as string;
+      const grade = data?.grade as string;
       const school_name = data?.school_name as string | null;
       const city = data?.city as string;
       const mobile_number = data?.mobile_number as string;
@@ -62,8 +60,8 @@ export const leadService = {
       // Transform from database format (snake_case) to client format (camelCase)
       return {
         id: id,
-        parentName: parent_name,
-        childGrade: child_grade,
+        name: name,
+        grade: grade,
         schoolName: school_name || undefined,
         city: city,
         mobileNumber: mobile_number,
